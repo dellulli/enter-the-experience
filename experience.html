@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allow Music</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #allow-music-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #1f1f1f;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        #allow-music-button:hover {
+            background-color: #ffffff;
+            color: #1f1f1f;
+        }
+        /* Hide the audio element controls */
+        #background-music {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="allow-music-button">Allow Music</button>
+
+    <!-- Audio Element -->
+    <audio id="background-music" src="music.mp3" loop></audio>
+
+    <script>
+        const allowMusicButton = document.getElementById('allow-music-button');
+        const backgroundMusic = document.getElementById('background-music');
+
+        allowMusicButton.addEventListener('click', () => {
+            // Play the music
+            backgroundMusic.play().then(() => {
+                // Navigate to the experience page after music starts playing
+                window.location.href = 'experience.html';
+            }).catch((error) => {
+                console.error('Error playing the music:', error);
+                // Even if music fails to play, navigate to the experience page
+                window.location.href = 'experience.html';
+            });
+        });
+    </script>
+</body>
+</html>
